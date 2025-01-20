@@ -5,23 +5,8 @@ FROM nvidia/cuda:12.1.1-devel-ubuntu22.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Update packages and install dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    wget \
-    libssl-dev \
-    zlib1g-dev \
-    libncurses5-dev \
-    libffi-dev \
-    libsqlite3-dev \
-    libreadline-dev \
-    libtk8.6 \
-    tcl-dev \
-    libgdbm-dev \
-    curl \
-    unzip \
-    git \
-    ffmpeg \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential wget libssl-dev zlib1g-dev libncurses5-dev libffi-dev libsqlite3-dev libreadline-dev libtk8.6 tcl-dev libgdbm-dev curl unzip git ffmpeg \
+&& rm -rf /var/lib/apt/lists/*
 
 # Set Python version
 ENV PYTHON_VERSION=3.10.15
