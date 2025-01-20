@@ -5,8 +5,8 @@ FROM nvidia/cuda:12.1.1-devel-ubuntu22.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Update packages and install dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends build-essential wget libssl-dev zlib1g-dev libncurses5-dev libffi-dev libsqlite3-dev libreadline-dev libtk8.6 tcl-dev libgdbm-dev curl unzip git ffmpeg \
-&& rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential wget libssl-dev zlib1g-dev libncurses5-dev libffi-dev libsqlite3-dev libreadline-dev libtk8.6 tcl-dev libgdbm-dev curl unzip git ffmpeg
+RUN rm -rf /var/lib/apt/lists/*
 
 # Set Python version
 ENV PYTHON_VERSION=3.10.15
@@ -15,7 +15,7 @@ ENV PYTHON_VERSION=3.10.15
 RUN wget https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz
 RUN tar xzf Python-$PYTHON_VERSION.tgz
 RUN cd Python-$PYTHON_VERSION
-RUN ./configure --enable-optimizations
+RUN ./configure --enable-optimizations
 RUN make -j"$(nproc)"
 RUN make altinstall
 RUN ln -s /usr/local/bin/python3.10 /usr/local/bin/python
