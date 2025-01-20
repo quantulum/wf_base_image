@@ -14,7 +14,7 @@ ENV PYTHON_VERSION=3.10.15
 # Download and build Python from source
 RUN wget https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz
 RUN tar xzf Python-$PYTHON_VERSION.tgz
-RUN cd Python-$PYTHON_VERSION  &&  ./configure --enable-optimizations && make -j"$(nproc)" && RUN make altinstall
+RUN cd Python-$PYTHON_VERSION  &&  ./configure --enable-optimizations && make -j"$(nproc)" && make altinstall
 RUN ln -s /usr/local/bin/python3.10 /usr/local/bin/python
 RUN cd ..
 RUN rm -rf Python-$PYTHON_VERSION.tgz Python-$PYTHON_VERSION
